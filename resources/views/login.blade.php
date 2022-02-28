@@ -13,10 +13,10 @@ if(isset($_SESSION['username'])){
     exit;
 }
 
-if(isset($_GET['submit'])){
+if(isset($_POST['submit'])){
 
-    $username = $_GET['username'];
-    $password = $_GET['password'];
+    $username = $_POST['username'];
+    $password = $_POST['password'];
 
     if(!empty(trim($username)) && !empty(trim($password))){
 
@@ -74,7 +74,7 @@ if(isset($_GET['submit'])){
             <p>Tech Box</p>
         </div>
 
-        <form action="{{url('login')}}" method="GET">
+        <form action="{{url('login')}}" method="POST">
             @csrf
 
             {{-- Username input --}}
