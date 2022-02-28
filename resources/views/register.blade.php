@@ -3,18 +3,18 @@
 // require_once("/resources/config.php");
 include "../resources/config.php";
 
-if(isset($_GET['submit'])){
+if(isset($_POST['submit'])){
 
     // filter data yang diinputkan
-    $fullname = filter_input(INPUT_GET, 'fullname', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-    $username = filter_input(INPUT_GET, 'username', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $fullname = filter_input(INPUT_POST, 'fullname', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $username = filter_input(INPUT_POST, 'username', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     // enkripsi password
-    $password = md5($_GET["password"]);
-    $cpassword = md5[$_GET["cpassword"]];
-    $address = filter_input(INPUT_GET, 'address', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-    $phone = filter_input(INPUT_GET, 'phone', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-    $age = filter_input(INPUT_GET, 'age', FILTER_VALIDATE_INT);
-    $birthdate = filter_input(INPUT_GET, 'birthdate');
+    $password = md5($_POST["password"]);
+    $cpassword = md5[$_POST["cpassword"]];
+    $address = filter_input(INPUT_POST, 'address', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $phone = filter_input(INPUT_POST, 'phone', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    $age = filter_input(INPUT_POST, 'age', FILTER_VALIDATE_INT);
+    $birthdate = filter_input(INPUT_POST, 'birthdate');
 
     // menyiapkan query
     $sql = "INSERT INTO users (username, password, cpassword, fullname, address, phone, age, birthdate)
@@ -53,7 +53,7 @@ if(isset($_GET['submit'])){
             <p>Tech Box</p>
         </div>
 
-        <form action="{{url('register')}}" method="GET">
+        <form action="{{url('register')}}" method="POST">
 
             {{-- Username input --}}
             <div class="form-outline mb-4">
